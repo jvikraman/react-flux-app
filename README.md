@@ -1,6 +1,6 @@
 ### A sample app built using React & Flux
 ---
-**Tech Stack & Versions**
+**Tech Stack & Versions in use**
 - **Node** for server side js
 - **Browserify** v11.0.1 - for module bundling
 - **React** v0.13.3 - for components
@@ -8,7 +8,7 @@
 - **Flux** v2.0.3 - for unidirectional data flow
 - **Gulp** v3.9.0 - for build tasks
 
-Review `package.json` for additional dependencies & versions.
+    Review `package.json` for additional dependencies & versions.
 
 ----
 ### How do I run this app?
@@ -17,11 +17,11 @@ Review `package.json` for additional dependencies & versions.
 - then do an `npm install`
 - and then `gulp` to run the app
 
-Running `gulp` does the following things:
-- Compiles React JSX to plain JS
-- Lints JSX & JS using ESLint
-- Bundles JS & CSS files using Browserify
-- Migrates the app to the dist folder
-- Runs a local dev server at port 9005
-- Opens the app at that port with live reloading enabled
+    Running `gulp` does the following things:
+    - Compiles React JSX to plain JS
+    - Lints JSX & JS using ESLint
+    - Bundles JS & CSS files using Browserify
+    - Migrates the app to the dist folder
+    - Runs a local dev server at port 9005
+    - Opens the app at that port with live reloading enabled
 
