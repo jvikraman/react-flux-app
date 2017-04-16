@@ -10,7 +10,7 @@
 /build
 
 # dist folder
-#dist
+dist
 
 # misc
 .DS_Store
