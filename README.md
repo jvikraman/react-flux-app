@@ -22,6 +22,6 @@
     - Lints JSX & JS using ESLint
     - Bundles JS & CSS files using Browserify
     - Migrates the app to the dist folder
-    - Runs a local dev server at port 9005
+    - Runs a local dev server at port 9000
     - Opens the app at that port with live reloading enabled
 
