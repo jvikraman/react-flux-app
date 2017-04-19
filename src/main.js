@@ -1,40 +1,11 @@
-//define jQuery globally & tell browserify about it
-$ = jQuery = require('jquery');
+"use strict";
+
 var React = require('react');
-var Home = require('./components/homePage');
-var Authors = require('./components/authors/authorPage');
-var About = require('./components/about/aboutPage');
-var Header = require('./components/common/header');
+var Router = require('react-router');
+var routes = require('./routes');
 
-//routing technique without a router
-(function(win) {
-    
-    "use strict";
-    
-    var App = React.createClass({
-        render: function() {
-            var Child;
-            switch(this.props.route) {
-                case 'about': Child = About; break;
-                case 'authors': Child = Authors; break;
-                default: Child = Home;
-            }
-            return (
-                <div>
-                    <Header/>
-                    <Child/>
-                </div>
-            );
-        }
-    });
+//run the router
+Router.run(routes, function(Handler) {
+    React.render(<Handler/>, document.getElementById('app'));
+});
 
-    function render() {
-        var route = win.location.hash.substr(1);
-        React.render(<App route={route}/>, document.getElementById('app'));
-    }
-
-    //listen for hashchange event & re-render the view
-    win.addEventListener('hashchange', render);
-    render();
-
-}(window));
