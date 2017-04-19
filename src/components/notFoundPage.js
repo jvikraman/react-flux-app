@@ -9,7 +9,7 @@ var NotFoundPage = React.createClass({
         return (                                    
             <div>
                 <h1>Page Not Found</h1>
-                <p>Sorry. There's nothing to see here!</p>
+                <p>Sorry. The content you are looking for is no where to be found!</p>
                 <p><Link to="app">Back to home</Link></p>
             </div>
         );
