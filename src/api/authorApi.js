@@ -10,36 +10,26 @@ var _generateId = function(author) {
     return author.firstName.toLowerCase() + "-" + author.lastName.toLowerCase();
 };
 
-var _clone = function(item) {
-    return JSON.parse(JSON.stringify(item));
-};
-
 var AuthorApi = {
 
-    getAllAuthors: function() {
-        return _clone(authors);
+    getAllAuthors: function() {       
+        return authors;
     },
 
-    getAuthorById: function(id) {
-        var author = _.find(authors, {id: id});
-        return _clone(author);
+    getAuthorById: function(id) {        
+        return _.find(authors, {id: id});
     },
 
     saveAuthor: function(author) {
-        if(author.id) {
-            var existingAuthorIdx = _.indexOf(authors, _.find(authors, {id: id}));
-            authors.splice(existingAuthorIdx, 1, author);
-        } else {
+        if(!author.id) {
             author.id = _generateId(author);
             authors.push(author);
         }
-        console.log("Author saved!");
-        return _clone(author);
+        return author;        
     },
 
     deleteAuthor: function(id) {
-        _.remove(authors, {id: id});
-        console.log("Author deleted!");
+        _.remove(authors, {id: id});        
     }
 };
 
