@@ -13,16 +13,35 @@ var ManageAuthorPage = React.createClass({
 		Router.Navigation
 	],
 
+	//logic to detect whether user has unsaved data in the form
+	statics: {
+		willTransitionFrom: function(transition, component) {
+			if(component.state.dirty && !confirm("Leave without saving?")) {
+				transition.abort();
+			}
+		}
+	},
+
 	//setting up initial state
 	getInitialState: function() {
 		return {
 			author: {id: '', firstName: '', lastName: ''},
-			errors: {}
+			errors: {},
+			dirty: false
 		};
+	},
+
+	//this life cycle method fires befores the render() method
+	componentWillMount: function() {
+		var authorId = this.props.params.id; //same as '/author:id'
+		if(authorId) {
+			this.setState({author: AuthorApi.getAuthorById(authorId)});
+		}
 	},
 
 	//custom fn to keep the state in sync
 	setAuthorState: function(event) {
+		this.setState({dirty: true}); //due to changes the form is now dirty
 		var field = event.target.name;
 		var value = event.target.value;
 		this.state.author[field] = value;
@@ -59,6 +78,7 @@ var ManageAuthorPage = React.createClass({
 		}
 
 		AuthorApi.saveAuthor(this.state.author);
+		this.setState({dirty: false}); //the form is clean after a save operation
 		toastr.success("Author saved!"); //display a toastr message
 		this.transitionTo('authors'); //transition to the named route after the save
 	},
